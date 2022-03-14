@@ -1,2 +1,2 @@
-# MJ2-sijun-
+# MJ2
 Tryangle
