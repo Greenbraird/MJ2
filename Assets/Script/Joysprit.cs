@@ -10,7 +10,7 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     Transform m_trCube;
     float m_fRadius;
-    float m_fSpeed = 5.0f;
+    float m_fSpeed = 3.0f;
     float m_fSqr = 0;
 
     Vector3 m_vecMove;
