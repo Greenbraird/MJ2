@@ -1151,6 +1151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   look_ob: {fileID: 1695811893}
+  joy_s: {fileID: 504981147}
+  UI_mo: {fileID: 788026632}
   lookOffset: {x: 0, y: 90, z: -73}
 --- !u!1 &504981147
 GameObject:
@@ -1171,7 +1173,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &504981148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3035,7 +3037,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalPosition.y
