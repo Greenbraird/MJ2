@@ -18,7 +18,7 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     Vector2 m_vecNormal;
 
     bool m_bTouch = false;
-
+    // 깃허브 적용되나?
 
     void Start()
     {
