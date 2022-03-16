@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 368284846}
   - component: {fileID: 368284848}
   - component: {fileID: 368284847}
+  - component: {fileID: 368284849}
   m_Layer: 5
   m_Name: Joystickback
   m_TagString: Untagged
@@ -916,6 +917,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 368284845}
   m_CullTransparentMesh: 1
+--- !u!114 &368284849
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 368284845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ed8158316c027c44b4b6173fab03aab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rect_Background: {fileID: 368284846}
+  rect_Joystick: {fileID: 1594649242}
+  go_Plaayer: {fileID: 1695811890}
+  moveSpeed: 3
 --- !u!1 &438745366
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1183,6 @@ GameObject:
   - component: {fileID: 504981151}
   - component: {fileID: 504981150}
   - component: {fileID: 504981149}
-  - component: {fileID: 504981148}
   m_Layer: 5
   m_Name: JoyStick Casnvas
   m_TagString: Untagged
@@ -1174,18 +1190,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &504981148
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 504981147}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4ed8158316c027c44b4b6173fab03aab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &504981149
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2600,19 +2604,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
   m_PrefabInstance: {fileID: 2083817797}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &1695811891
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1695811890}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.39372984, y: 0.42940232, z: 0.5}
-  m_Center: {x: -0.0048415423, y: 0.22074635, z: 0}
 --- !u!4 &1695811893 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
@@ -2632,7 +2623,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 36
+  m_Constraints: 116
   m_CollisionDetection: 0
 --- !u!1 &1695927851
 GameObject:

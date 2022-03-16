@@ -5,76 +5,46 @@ using UnityEngine.EventSystems;
 
 public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPointerUpHandler
 {
-    RectTransform m_rectBack;
-    RectTransform m_rectJoystick;
+    [SerializeField] private RectTransform rect_Background;
+    [SerializeField] private RectTransform rect_Joystick;
 
-    Transform m_trCube;
-    float m_fRadius;
-    float m_fSpeed = 3.0f;
-    float m_fSqr = 0;
+    private float radius;
 
-    Vector3 m_vecMove;
+    [SerializeField] private GameObject go_Plaayer;
+    [SerializeField] private float moveSpeed;
 
-    Vector2 m_vecNormal;
-
-    bool m_bTouch = false;
-    
-
-    void Start()
-    {
-        m_rectBack = transform.Find("Joystickback").GetComponent<RectTransform>();
-        m_rectJoystick = transform.Find("Joystickback/Joystick").GetComponent<RectTransform>();
-
-        m_trCube = GameObject.Find("charter").transform;
-
-        // JoystickBackground의 반지름입니다.
-        m_fRadius = m_rectBack.rect.width * 0.5f;
-    }
+    private bool isTouch = false;
+    private Vector3 movePosition;
 
     void Update()
     {
-        if (m_bTouch)
-        {
-            m_trCube.position += m_vecMove;
-        }
-
+        if (isTouch)
+            go_Plaayer.transform.position += movePosition;
     }
 
-    void OnTouch(Vector2 vecTouch)
-    {  
-        Vector2 vec = new Vector2(vecTouch.x - m_rectBack.position.x, vecTouch.y - m_rectBack.position.y);  
-
-
-        // vec값을 m_fRadius 이상이 되지 않도록 합니다.
-        vec = Vector2.ClampMagnitude(vec, m_fRadius);
-        m_rectJoystick.localPosition = vec;
-
-        // 조이스틱 배경과 조이스틱과의 거리 비율로 이동합니다.
-        float fSqr = (m_rectBack.position - m_rectJoystick.position).sqrMagnitude / (m_fRadius * m_fRadius);
-
-        // 터치위치 정규화
-        Vector2 vecNormal = vec.normalized;
-
-        m_vecMove = new Vector3(vecNormal.x * m_fSpeed * Time.deltaTime , 0f, vecNormal.y * m_fSpeed * Time.deltaTime );
-        m_trCube.eulerAngles = new Vector3(0f, Mathf.Atan2(vecNormal.x, vecNormal.y) * Mathf.Rad2Deg, 0f);
+    void Start()
+    {
+        radius = rect_Background.rect.width * 0.5f;
     }
-
     public void OnDrag(PointerEventData eventData)
     {
-        OnTouch(eventData.position);
-        m_bTouch = true;
+        Vector2 value = eventData.position - (Vector2)rect_Background.position;
+
+        value = Vector2.ClampMagnitude(value, radius);
+        rect_Joystick.localPosition = value;
+
+        value = value.normalized;
+
+        movePosition = new Vector3(value.x * moveSpeed * Time.deltaTime, 0f, value.y * moveSpeed * Time.deltaTime);
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        OnTouch(eventData.position);
-        m_bTouch = true;
+        isTouch = true;
     }
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        // 원래 위치로 되돌립니다.
-        m_rectJoystick.localPosition = Vector2.zero;
-        m_bTouch = false;
+        rect_Joystick.localPosition = Vector3.zero;
     }
 }
