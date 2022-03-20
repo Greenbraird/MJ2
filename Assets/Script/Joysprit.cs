@@ -32,9 +32,9 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
         value = Vector2.ClampMagnitude(value, radius);
         rect_Joystick.localPosition = value;
-
+        Debug.Log("비정규화" + value);
         value = value.normalized;
-
+        Debug.Log("정규화" + value);
         movePosition = new Vector3(value.x * moveSpeed * Time.deltaTime, 0f, value.y * moveSpeed * Time.deltaTime);
     }
 
