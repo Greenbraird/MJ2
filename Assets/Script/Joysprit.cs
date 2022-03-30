@@ -9,7 +9,10 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     [SerializeField] private RectTransform rect_Joystick;
     [SerializeField] private CharacterController controller;
 
+    Transform playerTransform;
     private float radius;
+    private float playerRotation;
+    private bool isTouch;
 
     [SerializeField] private GameObject go_Plaayer;
     [SerializeField] private float moveSpeed;
@@ -21,25 +24,35 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     private void Start()
     {
         radius = rect_Background.rect.width * 0.5f;
+        isTouch = false;
+        playerTransform = controller.GetComponent<Transform>();
     }
 
     void Update()
     {
-        // if (isTouch)
-        //go_Plaayer.transform.position += movePosition;
-        controller.Move(movePosition * Time.deltaTime * moveSpeed);
+        if (isTouch)
+            controller.Move(movePosition * Time.deltaTime * moveSpeed);
+
+        playerTransform.transform.rotation = Quaternion.Euler(0, playerRotation, 0);
     }
 
   
     public void OnDrag(PointerEventData eventData)
     {
+        //Player Cha y값 회전에 대한 코드
+        Vector2 v2 = rect_Joystick.position - rect_Background.position;
+        playerRotation = Mathf.Atan2(v2.x, v2.y) * Mathf.Rad2Deg;
 
+        //Player Char의 움직임에 대한 코드
+        anim.SetBool("player walk", true);
         Vector2 value = eventData.position - (Vector2)rect_Background.position;
 
         value = Vector2.ClampMagnitude(value, radius);
         rect_Joystick.localPosition = value;
         Debug.Log("비정규화" + value);
+
         value = value.normalized;
+
         Debug.Log("정규화" + value);
         movePosition = new Vector3(value.x , 0f, value.y);
         
@@ -48,8 +61,9 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        //isTouch = true;
-        anim.SetBool("player walk", true);
+        rect_Background.position = new Vector2(eventData.position.x, eventData.position.y);
+        isTouch = true;
+        
     }
 
     public void OnPointerUp(PointerEventData eventData)

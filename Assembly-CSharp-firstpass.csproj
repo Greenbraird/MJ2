@@ -293,9 +293,6 @@
  <Reference Include="DOTween">
  <HintPath>C:/Users/siwan/Desktop/GameDevelop/MJ2(sijun)/Assets/Plugins/Demigiant/DOTween/DOTween.dll</HintPath>
  </Reference>
- <Reference Include="Newtonsoft.Json">
- <HintPath>C:/Users/siwan/Desktop/GameDevelop/MJ2(sijun)/Library/PackageCache/com.unity.nuget.newtonsoft-json@2.0.0/Runtime/Newtonsoft.Json.dll</HintPath>
- </Reference>
  <Reference Include="DOTweenPro">
  <HintPath>C:/Users/siwan/Desktop/GameDevelop/MJ2(sijun)/Assets/Plugins/Demigiant/DOTweenPro/DOTweenPro.dll</HintPath>
  </Reference>
