@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 public class Sencesprit : MonoBehaviour
 {
     // Start is called before the first frame update
-   public void Go_To_Gmae_Sence()
+   public void Go_To_Game_Sence()
     {
-        SceneManager.LoadScene("New Scene");
+        SceneManager.LoadScene("Ex Scene");
     }
 }
