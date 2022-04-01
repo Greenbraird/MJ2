@@ -442,7 +442,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1248166615}
         m_TargetAssemblyTypeName: Sencesprit, Assembly-CSharp
-        m_MethodName: Go_To_Gmae_Sence
+        m_MethodName: Go_To_Game_Sence
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
