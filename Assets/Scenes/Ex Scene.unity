@@ -494,7 +494,7 @@ MonoBehaviour:
   rect_Background: {fileID: 1153148818}
   rect_Joystick: {fileID: 432155543}
   controller: {fileID: 71677408}
-  go_Plaayer: {fileID: 71677405}
+  playerTransform: {fileID: 0}
   moveSpeed: 3
   anim: {fileID: 71677407}
 --- !u!114 &219441556
@@ -2063,15 +2063,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_LocalPosition.x
