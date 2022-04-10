@@ -1,0 +1,239 @@
+[33mcommit 7d2b97c46693f5ca2621b4f783591c1a1b30dcf0[m[33m ([m[1;36mHEAD -> [m[1;32mmaster[m[33m)[m
+Merge: 90bbe16 269197c
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Sun Apr 10 17:39:30 2022 +0900
+
+    Merge branch 'testbranch'
+
+[33mcommit 269197c7e088027b918afdea56808ce1fb09f15e[m[33m ([m[1;32mtestbranch[m[33m)[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Sun Apr 10 14:42:48 2022 +0900
+
+    testbranch2
+
+[33mcommit 90bbe16cc56978e44412a04268f57d59241246ea[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 8 13:42:37 2022 +0900
+
+    이거 뭐야
+
+[33mcommit 2ca25ba614e4275451751ea21daedd1b140d3d08[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 8 13:41:08 2022 +0900
+
+    2022-04-08
+
+[33mcommit 0a03d559485ecc3d587bcc1352bd64eaf1aaad79[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 8 12:51:56 2022 +0900
+
+    tset
+
+[33mcommit 07aca9df94fa55be189b1c623edf7444d7e8e248[m[33m ([m[1;31morigin/master[m[33m)[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 8 10:29:00 2022 +0900
+
+    test2
+
+[33mcommit 0d49ab1428b44b2b493f5f1236dd63538ec21376[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 8 10:27:03 2022 +0900
+
+    test
+
+[33mcommit fe6fd5f0edc769e4ba8d4e7153a29f3c2fccab68[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Apr 6 22:16:26 2022 +0900
+
+    new test
+
+[33mcommit 196487edc3885385119a6e0b0715045f7d51376f[m
+Merge: 2c7da5c 8109028
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Apr 6 22:10:56 2022 +0900
+
+    Merge branch 'master' of https://github.com/Greenbraird/MJ2-sijun-
+
+[33mcommit 2c7da5c22aabf208b8b02e1192697b8b8aeb832d[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Apr 6 22:09:42 2022 +0900
+
+    test_meta
+
+[33mcommit 8109028b86b1e41d460545b0622252bb9e2bcf5c[m
+Author: Sijun kim <87434273+Greenbraird@users.noreply.github.com>
+Date:   Wed Apr 6 22:05:49 2022 +0900
+
+    Update .gitignore
+
+[33mcommit 4c067d3f1f40c82e4e528042ffa42f5d87dce916[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Apr 6 21:40:07 2022 +0900
+
+    2022-04-06-01
+
+[33mcommit 4cffcbf31433380efb5770ba748c377adebc000e[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Apr 6 19:50:13 2022 +0900
+
+    2022-04-06
+
+[33mcommit b26fba460aa86cd90eafbfe708c32ccd37fef54f[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Apr 4 12:48:12 2022 +0900
+
+    2022-04-04
+
+[33mcommit fd86ad62d491a7430a3df16a49d2543a433ff828[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Fri Apr 1 10:28:49 2022 +0900
+
+    2022-04-01
+
+[33mcommit e05d9aacd3779fd64dc5e02c9d5ee0e6e61bcf07[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Thu Mar 31 16:13:53 2022 +0900
+
+    2022-03-31
+
+[33mcommit 3e4a06345bc499e4772c11ddd38a8aee6f646943[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Mar 30 19:39:41 2022 +0900
+
+    2022-03-30
+
+[33mcommit 8ec5730cee22fa61ab49bf8341bae2e636aa4703[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Tue Mar 29 13:28:10 2022 +0900
+
+    2022-02-29-01
+
+[33mcommit 4a4466647f889e9cb44bffc4a483dda9cd53b965[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Tue Mar 29 13:26:53 2022 +0900
+
+    2022-03-29
+
+[33mcommit 8a5257c6d850d803862089b892ea9c88de8f7829[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 28 11:01:31 2022 +0900
+
+    캐릭터 연구 2022-03-28
+
+[33mcommit dc8109470b591915a15bbf7dff2f9a9689ff7b3b[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 28 10:54:04 2022 +0900
+
+    캐릭터 대한 연구
+
+[33mcommit 932a4f3144de4ac760acf9df520970d91be9b82f[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Sun Mar 20 14:07:01 2022 +0900
+
+    시작화면 신과 Tryangle로고
+
+[33mcommit 8156d40e5b2ff4c816d086800a3665670f3c745d[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Sun Mar 20 14:02:16 2022 +0900
+
+    2022-03-20
+
+[33mcommit 0b9d7b6c0155a72e1e81088ee2f309c64015c040[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Mar 16 22:31:28 2022 +0900
+
+    캐릭터 연구 2022/03/16
+
+[33mcommit 27a824c9cdc59f397392ad1ffd72e2c9934c407f[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Wed Mar 16 22:27:33 2022 +0900
+
+    캐릭터 이동 연구
+
+[33mcommit 530b97a5724739f98d36c76c5edb1da51ea0d652[m
+Merge: 5a069e3 cfac636
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 19:19:13 2022 +0900
+
+    Merge branch 'master' of https://github.com/Greenbraird/MJ2-sijun-
+
+[33mcommit 5a069e338fdc120d3e6f708cf8ebd03e3a608bef[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 19:17:37 2022 +0900
+
+    UI 상호작용 변경
+
+[33mcommit cfac636ccf01a53afc1cc45231ba246983d3635f[m
+Author: Greenbraird <87434273+Greenbraird@users.noreply.github.com>
+Date:   Mon Mar 14 17:35:29 2022 +0900
+
+    Update README.md
+
+[33mcommit ebd1ce0cf75bf262265ab33a09ee4888413fb6b5[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 14:17:40 2022 +0900
+
+    스피드 변경
+
+[33mcommit 4fbd750e06899089122d79ce5c5a616a8661f8b5[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 14:13:27 2022 +0900
+
+    캐릭터 이동함
+
+[33mcommit 4133979bce9011466f9bbdf241f8c163b2ee3325[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:50:48 2022 +0900
+
+    retest
+
+[33mcommit 7f2788c3efd67f21f1b70f83c44b9a5df098a167[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:49:34 2022 +0900
+
+    test 2
+
+[33mcommit 16fc4c5b40073a5c6548c247fd169d3a4a1dab5a[m
+Merge: 5f50ae8 a096c23
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:48:30 2022 +0900
+
+    Merge branch 'master' of https://github.com/Greenbraird/MJ2-sijun-
+
+[33mcommit 5f50ae87fcf9363dbc2a514b5a37be2543097a42[m
+Merge: a43f80e d993dec
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:44:17 2022 +0900
+
+    합쳐졌다
+
+[33mcommit a096c23fa82e825cfcb2b6767885209b8819ad8f[m
+Merge: a43f80e d993dec
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:44:17 2022 +0900
+
+    Merge branch 'master' of https://github.com/Greenbraird/MJ2-sijun-
+
+[33mcommit a43f80ead4b17e3541645e600cdb53fff91ac59c[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:42:16 2022 +0900
+
+    test
+
+[33mcommit d993dec341db9b5022c0eca848ef251a749d7417[m
+Author: Greenbraird <87434273+Greenbraird@users.noreply.github.com>
+Date:   Mon Mar 14 13:40:14 2022 +0900
+
+    Create README.md
+
+[33mcommit 58fc23d078de358429bb5783d30b201b00f8713d[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:34:38 2022 +0900
+
+    초기 커밋.
+
+[33mcommit 3a5db9333049902045af53b3c9d7ad16cd6238eb[m
+Author: Green_Sprout <sijun0514@naver.com>
+Date:   Mon Mar 14 13:33:52 2022 +0900
+
+    .gitattributes 및 .gitignore을(를) 추가합니다.
