@@ -63,6 +63,7 @@
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Compile Include="Assets\Script\EX.cs" />
     <Compile Include="Assets\Script\animationscrit.cs" />
+    <Compile Include="Assets\Script\TimerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="UnityEngine">
