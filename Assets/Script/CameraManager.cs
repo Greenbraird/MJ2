@@ -16,21 +16,12 @@ public class CameraManager : MonoBehaviour
     private bool isGameStartTimerPanelOnClick;
     private float timer;
 
-<<<<<<< HEAD
+
     public Vector3 lookOffset = new Vector3(0, 90f, -73f);
     private void Awake()
     {
         transform.position = new Vector3(0, 0, 0) + lookOffset;
 
-=======
-    bool start_flag = false;
-
-    public Vector3 lookOffset = new Vector3(0, 90f, -73f); 
-    
-    void Start()
-    {
-        transform.position = new Vector3(0, 0, 0) + lookOffset;
->>>>>>> 8c404fb187dd8626e1366a38a49d800c4b9ea8f5
         transform.LookAt(GameObject.Find("Map").GetComponent<Transform>());
 
         timer = 0;
@@ -71,7 +62,6 @@ public class CameraManager : MonoBehaviour
 
     private void LateUpdate()
     {
-<<<<<<< HEAD
         if(Camera.main.fieldOfView < 50)
         {
             transform.position = look_ob.position + lookOffset;
@@ -96,16 +86,6 @@ public class CameraManager : MonoBehaviour
     public void Seek_On_Click()
     {
         
-=======
-        if(start_flag)
-            transform.LookAt(look_ob);
-    }
-    public void Seek_On_Click()
-    {
-        transform.position = look_ob.position + lookOffset;
-        start_flag = true;
-
->>>>>>> 8c404fb187dd8626e1366a38a49d800c4b9ea8f5
         SoundManager.instance.PlaySE("UI Click Sound");
         DOTween.To(() => Camera.main.fieldOfView, x=> Camera.main.fieldOfView = x, 7.5f, 1);
         look_ob.transform.DOScale(new Vector3(15, 15, 15), 2);
@@ -118,7 +98,6 @@ public class CameraManager : MonoBehaviour
     public void Hide_On_Click()
     {
         transform.position = look_ob.position + lookOffset;
-        start_flag = true;
 
         SoundManager.instance.PlaySE("UI Click Sound");
         DOTween.To(() => Camera.main.fieldOfView, x => Camera.main.fieldOfView = x, 20, 2);

@@ -59,12 +59,16 @@
     <Compile Include="Assets\Script\ch.cs" />
     <Compile Include="Assets\Script\UIManager.cs" />
     <Compile Include="Assets\Script\AIScript.cs" />
+    <Compile Include="Assets\Script\s.cs" />
     <Compile Include="Assets\Script\CameraManager.cs" />
     <Compile Include="Assets\Script\Joysprit.cs" />
+    <Compile Include="Assets\Script\player.cs" />
+    <Compile Include="Assets\Script\ch_d_list.cs" />
     <Compile Include="Assets\Script\Sencesprit.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Compile Include="Assets\Script\EX.cs" />
     <Compile Include="Assets\Script\animationscrit.cs" />
+    <Compile Include="Assets\Script\d.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
