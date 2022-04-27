@@ -1,5 +1,9 @@
 sceneSetups:
+<<<<<<< HEAD
 - path: Assets/Scenes/TimerScene.unity
+=======
+- path: Assets/Scenes/soda.unity
+>>>>>>> 8c404fb187dd8626e1366a38a49d800c4b9ea8f5
   isLoaded: 1
   isActive: 1
   isSubScene: 0
