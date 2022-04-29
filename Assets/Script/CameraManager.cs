@@ -35,26 +35,26 @@ public class CameraManager : MonoBehaviour
             {
                 gameStartTimerPanel.GetComponent<Text>().text = "2";
                 // gameStartTimerPanel.GetComponent<RectTransform>().DOScale(new Vector3(0, 0, 0), 0.5f).From().SetEase(Ease.InOutBounce);
-                Debug.Log(timer);
+                //Debug.Log(timer);
             }
             else if (1.95f < timer && timer < 2)
             {
                 gameStartTimerPanel.GetComponent<Text>().text = "1";
                 //gameStartTimerPanel.GetComponent<RectTransform>().DOScale(new Vector3(0, 0, 0), 0.5f).From().SetEase(Ease.InOutBounce);
-                Debug.Log(timer);
+               // Debug.Log(timer);
              }
 
             else if (2.95f < timer && timer < 3)
             {
                 gameStartTimerPanel.GetComponent<Text>().text = "0";
-                Debug.Log(timer);
+                //Debug.Log(timer);
                 //gameStartTimerPanel.GetComponent<RectTransform>().DOScale(new Vector3(0, 0, 0), 0.5f).From().SetEase(Ease.InOutBounce);
             }
 
             else if (0 < timer && timer < 0.1f)
             {
                 gameStartTimerPanel.GetComponent<Text>().text = "3";
-            Debug.Log(timer);
+                //Debug.Log(timer);
                 //gameStartTimerPanel.GetComponent<RectTransform>().DOScale(new Vector3(0, 0, 0), 0.5f).From().SetEase(Ease.InOutBounce);
             }
 
@@ -88,7 +88,6 @@ public class CameraManager : MonoBehaviour
         
         SoundManager.instance.PlaySE("UI Click Sound");
         DOTween.To(() => Camera.main.fieldOfView, x=> Camera.main.fieldOfView = x, 7.5f, 1);
-        look_ob.transform.DOScale(new Vector3(15, 15, 15), 2);
         Timer();
         StartCoroutine(Gamestrat()); 
         gameStartTimerPanel.SetActive(true);

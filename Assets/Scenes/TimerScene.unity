@@ -106,7 +106,7 @@ NavMeshSettings:
   m_BuildSettings:
     serializedVersion: 2
     agentTypeID: 0
-    agentRadius: 1
+    agentRadius: 0.7
     agentHeight: 2
     agentSlope: 45
     agentClimb: 0.4
@@ -114,7 +114,7 @@ NavMeshSettings:
     maxJumpAcrossDistance: 0
     minRegionArea: 2
     manualCellSize: 0
-    cellSize: 0.33333334
+    cellSize: 0.23333333
     manualTileSize: 0
     tileSize: 256
     accuratePlacement: 0
@@ -798,6 +798,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
       value: 
@@ -950,6 +954,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 213322553907896435, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 213322554200414450, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 213322554387895021, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     - target: {fileID: 4234569527902066132, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 7.438111
@@ -957,6 +973,26 @@ PrefabInstance:
     - target: {fileID: 4234569527902066132, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
       propertyPath: m_ConnectedAnchor.z
       value: -5.701947
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617614044838305351, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617614045880296987, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617614046325741302, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617614046478400627, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 6617614046722884823, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 7198887313918679014, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
       propertyPath: m_ConnectedAnchor.x
@@ -1015,6 +1051,10 @@ PrefabInstance:
       value: Map
       objectReference: {fileID: 0}
     - target: {fileID: 8787951428696144175, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8787951430064445751, guid: b2406572ec46eab44a0d70cd4565ae09, type: 3}
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
@@ -1452,7 +1492,11 @@ MonoBehaviour:
     material: {fileID: 2100000, guid: 49cf460d4c05d9b4582c2c495b17af02, type: 2}
   - Meterialname: a zero Material
     material: {fileID: 2100000, guid: 35e5505e11d6b5d4d8d36d43357bacd0, type: 2}
-  seekob: {fileID: 0}
+  - Meterialname: Dead Material
+    material: {fileID: 2100000, guid: a1cd3c7c2104835439e17b2d8030726d, type: 2}
+  spotLightPrepab: {fileID: 8261719339936775191, guid: 06f02e1c49356784abd80cd4cae7949a, type: 3}
+  radar: {fileID: 8997454029313955779, guid: 089aab9858b6d2040ac615f14e668276, type: 3}
+  player: {fileID: 1365231607}
 --- !u!1 &552471996 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
@@ -2685,6 +2729,8 @@ MonoBehaviour:
   sfxSounds:
   - soundName: UI Click Sound
     clip: {fileID: 8300000, guid: d2b5b616ce3f04746a29550e4a93081d, type: 3}
+  - soundName: 'Footprint Sound '
+    clip: {fileID: 8300000, guid: 7c0773eba91f4ae4793b044886c7256a, type: 3}
   bgmPlayer: {fileID: 1064248752}
   sfxPlayer:
   - {fileID: 1064248751}
@@ -2828,6 +2874,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bot3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
       value: 
@@ -2955,19 +3005,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pushPower: 2
---- !u!65 &1365231612
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1365231607}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.247318, y: 0.30036232, z: 0.51394546}
-  m_Center: {x: -0.009697233, y: 0.34982076, z: 0.24302866}
 --- !u!1001 &1384062126
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3035,6 +3072,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bot6
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3069,7 +3110,7 @@ Light:
   serializedVersion: 10
   m_Type: 1
   m_Shape: 0
-  m_Color: {r: 1, g: 0.95686275, b: 0.8392157, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -3200,6 +3241,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Name
       value: Bot4
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
@@ -3540,6 +3585,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Bot1
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
       value: 
@@ -3696,6 +3745,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Name
       value: Bot2
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
@@ -4198,6 +4251,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Name
       value: Bot5
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
+      propertyPath: m_TagString
+      value: Bot
       objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: 46213a83480f4584ab3f0ed826610e63, type: 3}
       propertyPath: m_Controller
