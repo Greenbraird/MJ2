@@ -17,5 +17,9 @@ public class ch : MonoBehaviour
 
         Vector3 pushDir = new Vector3(hit.moveDirection.x, 0, hit.moveDirection.z);
         body.velocity = pushDir * pushPower;
+
+        if (hit.transform.tag == "Dead")
+            Debug.Log("¿‚»˘ AIøÕ ¡¢√À«‘");
     }
+
 }

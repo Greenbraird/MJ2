@@ -33,7 +33,11 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
 
         if (isTouch)
+        {
             controller.Move(movePosition * Time.deltaTime * moveSpeed);
+        }
+            
+
 
         playerTransform.transform.rotation = Quaternion.Euler(0, playerRotation, 0);
     }
@@ -62,6 +66,7 @@ public class Joysprit : MonoBehaviour, IPointerDownHandler, IDragHandler, IPoint
     {
         rect_Background.position = new Vector2(eventData.position.x, eventData.position.y);
         isTouch = true;
+        SoundManager.instance.PlaySE("Footprint Sound");
 
     }
 
