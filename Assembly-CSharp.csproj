@@ -64,12 +64,14 @@
     <Compile Include="Assets\Script\Joysprit.cs" />
     <Compile Include="Assets\Script\player.cs" />
     <Compile Include="Assets\Script\ch_d_list.cs" />
+    <Compile Include="Assets\Script\GameManager.cs" />
+    <Compile Include="Assets\Script\SeekScript.cs" />
     <Compile Include="Assets\Script\Sencesprit.cs" />
     <Compile Include="Assets\Script\SoundManager.cs" />
     <Compile Include="Assets\Script\EX.cs" />
     <Compile Include="Assets\Script\animationscrit.cs" />
     <Compile Include="Assets\Script\d.cs" />
-    <Compile Include="Assets\Script\SeekScript.cs" />
+    <Compile Include="Assets\Script\TimerScript.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Assets\TextMesh Pro\Shaders\TMPro.cginc" />
