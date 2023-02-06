@@ -2,15 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 [System.Serializable]
-public class Sound
-{
+
+public class Sound {
     public string soundName;
     public AudioClip clip;
 }
-public class SoundManager : MonoBehaviour
-{
-    public static SoundManager instance;
+
+public class SoundManager : MonoBehaviour {
+    public static SoundManager instance; 
 
     [Header("사운드 등록")]
     [SerializeField] Sound[] bgmSounds;
@@ -20,25 +21,31 @@ public class SoundManager : MonoBehaviour
     [SerializeField] AudioSource bgmPlayer;
     [SerializeField] AudioSource[] sfxPlayer;
 
-    void Start()
-    {
-        instance = this;
-    }
+    void Start() { instance = this; }
 
-    public void PlaySE(string _soundName)
-    {
+    public void PlaySE(string _soundName) {
         for(int i = 0; i < sfxSounds.Length; i++)
-        {
             if(_soundName == sfxSounds[i].soundName)
-            {
                 for(int x =0; x < sfxPlayer.Length; x++)
-                    if (!sfxPlayer[x].isPlaying)
-                    {
+                    if (!sfxPlayer[x].isPlaying) {
                         sfxPlayer[x].clip = sfxSounds[i].clip;
                         sfxPlayer[x].Play();
                         return;
                     }
-            }
-        }
+    }
+
+    public void OffSE(string _soundName) {
+        for (int i = 0; i < sfxSounds.Length; i++)
+            if (_soundName == sfxSounds[i].soundName)
+                for (int x = 0; x < sfxPlayer.Length; x++)
+                    if (sfxPlayer[x].isPlaying) {
+                        sfxPlayer[x].mute = !sfxPlayer[x].mute;
+                        return;
+                    }
+    }
+
+    public void PlayStartScrenSFX() {
+        sfxPlayer[0].clip = sfxSounds[0].clip;
+        sfxPlayer[0].Play();
     }
 }

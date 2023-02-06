@@ -2,207 +2,247 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UI;
+
+using UnityEngine.SceneManagement;
+
 using DG.Tweening;
 
+// 업그레이드 : AI 수 선택하기
 
-[System.Serializable]
-public class Meterialclass
-{
-    public string Meterialname;
-    public Material material;
-}
-public class AIScript : MonoBehaviour
-{
-    [Header("square맵 일때")]
-    [SerializeField] public List <Vector3> squarePosition = new List<Vector3>();
+public class AIScript : MonoBehaviour {
 
-    [Header("circle맵 일때")]
-    [SerializeField] public List <Vector3> circlePosition = new List<Vector3>();
+    /// Declaration
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
 
-    [Header("hexagon맵 일때")]
-    [SerializeField] public List <Vector3> hexagonPosition = new List<Vector3>();
-   
-    [Header("AI list")]
-    public List<GameObject> aIObject = new List<GameObject>();
+    /// Colider instance for AISeek, AIHide, Player(Hide/Seek)
+    private GameObject SeekCollider;
+    private GameObject BotCollider;
+    private GameObject PlayerCollider;
 
-    [Header("Marterial")]
-    [SerializeField]public Meterialclass[] meterialclass;
+    /// Identification number (AIHide number) : AIScript.Update() : GameManager.IsGameOver(true/false)
+    public static int AIHide_Counting = 7;
 
-    public GameObject spotLightPrepab;
-    public GameObject radar;
-    public GameObject player;
-    int seekHideAiRandemN;
-    GameObject seekob;
-    bool seekAssignment;
+    /// Choose one AISeek in GameManager.aIObject 
+    private GameObject AISeek;
+    public static bool isPlayerIsSeek = false;
 
-    void Update()
-    {
-        if(aIObject.Count == 0)
-        {
-            Time.timeScale = 0f;
-            Debug.Log("술래가 모든 도둑을 다 잡았습니다.");
+    /// Trigger for AISeek Seeking & seeking_AI
+    private bool AISeek_Seek_trigger = false;
+    private int seeking_AI;
+
+    /*                                                        [ IN GAME ]                                                                 */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+
+    void Start() {
+        for (int i = 0; i < 6; i++) {
+            /// [ AIHide ] : AIHide XYZ Freeze(ON)
+            GameManager.aIObject[i].GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+
+            /// [ AIHide ] : AIHide Animation(OFF)
+            GameManager.aIObject[i].GetComponent<Animator>().SetBool("AImove", false);
+
+
         }
-            
+    }
 
-        //seekob가 할당 되었을 때 랜덤한 hide Ai를 쫓는다
-        try
-        {
-            if (seekAssignment)
-                seekob.GetComponent<NavMeshAgent>().SetDestination(aIObject[seekHideAiRandemN].transform.position);
+    void Update() {
+
+        /// Player(Hide) : case 1, Lose
+        if (AIHide_Counting == 0 && isPlayerIsSeek == false) {
+            if (Joyscript.IsAlive == false) {
+                Debug.Log("Player(Hide) : player와 모든 도둑이 잡혔습니다 Lose");
+                GameManager.IsGameOver = true;
+                GameManager.IsWin = false;
+            }
         }
-        catch(System.Exception ex)
-        {
-            seekHideAiRandemN = Random.Range(0, aIObject.Count);
-            
+
+        /// Player(Seek) : case 1, Win
+        else if (AIHide_Counting == 0 && isPlayerIsSeek == true) {
+            Debug.Log("Player(Hide) : player가 모든 도둑을 다 잡았습니다.");
+            GameManager.IsGameOver = true;
+            GameManager.IsWin = true;
         }
+
+        if(AISeek_Seek_trigger) {
+            try {
+                AISeek.GetComponent<NavMeshAgent>().SetDestination(GameManager.aIObject[seeking_AI].transform.position);
+            } catch (System.Exception) {
+                seeking_AI = Random.Range(0, AIHide_Counting);
+                //AISeek.GetComponent<NavMeshAgent>().SetDestination(GameManager.aIObject[seeking_AI].transform.position);
+            }
+        }
+    }
+
+    /*                                                       [ PLAYER HIDE ]                                                              */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    ///UICanvas.HideBtn(Onclick)
+    public void playerHideAIMove() { 
+
+        /// Player(Hide)
+        isPlayerIsSeek = false;
+
+
+        // [ AISeek ]      **************************
         
-        /*
-        for(int j = 0; j< aIObject.Count; j++)
-        {
-            for(int h = 0; h < squarePosition.Count; h++)
-            {
-                if (aIObject[j].transform.position == squarePosition[h])
-                {
-                    aIObject[j].GetComponent<Animator>().SetBool("AImove", false);
-                }
-            }
-        }
-        */
-    }
+        /// Choose one AISeek Random in GameManager.aIObject 
+        int randomN = Random.Range(0, AIHide_Counting);
+        AISeek = GameManager.aIObject[randomN];
+        GameManager.aIObject.RemoveAt(randomN);
+        AISeek.tag = "Seek";
+        AIHide_Counting = GameManager.aIObject.Count;
 
-    IEnumerator seekAiMove()
-    {
-        yield return new WaitForSeconds(3);
-        seekHideAiRandemN = Random.Range(0, aIObject.Count);
-        while (seekAssignment)
-        {
-            yield return new WaitForSeconds(Random.Range(5, 7));
-            seekHideAiRandemN = Random.Range(0, aIObject.Count);
-        }
-    }
 
-    public void playerHiedAiMove()
-    {
-        int randemnum = Random.Range(0, aIObject.Count);
+        // [ Player(Hide) ] **************************
 
-        //Ai중 하나가 Seek로 바뀐다
-        seekob = aIObject[randemnum];
-        aIObject.RemoveAt(randemnum);
+        /// Player + Collider(Hide : Bot)
+        PlayerCollider = GameObject.Instantiate(GameManager.instance.player_hide, GameManager.player.transform.position, Quaternion.identity);
 
-        //Seek의 material이 변한다
-        seekob.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = meterialclass[0].material;
+        /// PlayerCollider.transform : Player 's child
+        PlayerCollider.transform.parent = GameManager.player.transform;
 
-        //tag를 Seek로 바꾼다
-        seekob.tag = "Seek";
+        /// change Player(Hide) Material : (0) Hide_Material
+        GameManager.player.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = GameManager.material[0];
 
-        //네모맵에 관한 코루틴 함수를 호출
-        StartCoroutine(squareCorutineAiMove());
 
-        //Seek Ai에게 필요한 요소들은 다는 코루틴 함수를 호출 
-        StartCoroutine(SeekAiready());
+        // [ AIHide ]       **************************
+        AIHideReady();
 
-        //Seek Ai의 움직임에 관한 코루틴 함수
+        StartCoroutine(CorutineAiMove());
+
+        // [ AISeek ]       **************************
+        SeekReady();
         StartCoroutine(seekAiMove());
+    }
+
+    /*                                                     [ PLAYER SEEK ]                                                                */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    /// UICanvas.SeekBtn(Onclick)
+    public void playerSeekAiMove() {
+
+        // Player(Seek)
+        isPlayerIsSeek = true;
+
+
+        // [ Player(Seek) ] **************************
+        AISeek = GameManager.player;
+        ///GameManager.aIObject.RemoveAt(6);  /// Remove Last AI Object
+        AISeek.tag = "Seek";
+        AIHide_Counting = GameManager.aIObject.Count;
+        SeekReady();
+
+
+        // [ AIHide ]       **************************
+        AIHideReady();
+
+        /// change AIHide Material : (2) transparent
+        for (int i = 0; i < AIHide_Counting; i++)
+            GameManager.aIObject[i].transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = GameManager.material[2];
+
+        StartCoroutine(CorutineAiMove());
 
     }
 
-    IEnumerator SeekAiready()//Seek Ai에게 필요한 요소들은 다는 코루딘 함수
-    {
-        yield return new WaitForSeconds(3);
-        //Seek에게 light를 단다
-        GameObject.Instantiate(spotLightPrepab, seekob.transform.position, Quaternion.identity).transform.parent = seekob.transform;
 
-        //Seek에게 Scale를 키운다
-        seekob.transform.DOScale(new Vector3(10, 10, 10), 2);
+    /*                                                         [ AIHide ]                                                                 */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    public void AIHideReady() {
+        for (int i = 0; i < AIHide_Counting; i++) {
 
-        //Seek에게 radar를 단다
-        radar = GameObject.Instantiate(radar, seekob.transform.position, Quaternion.identity);
+            /// [ AIHide ] : AIHide + Collider(Bot)
+            BotCollider = GameObject.Instantiate(GameManager.instance.radar_bot, GameManager.aIObject[i].transform.position, Quaternion.identity);
 
-        //radar의 transform을 Seek Ai의 자슥으로 위치 시킨다.
-        radar.transform.parent = seekob.transform;
+            /// [ AIHide ] : BotCollider.transform : aIObject 's child
+            BotCollider.transform.parent = GameManager.aIObject[i].transform;
 
-        //radar의 transform Scale를 1,1,1로 바꾼다.
-        radar.transform.localScale = new Vector3(1, 1, 1);
+            /// [ AIHide ] : change AIHide Material : (0) Hide_Material
+            GameManager.aIObject[i].transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = GameManager.material[0];
 
-        //animation를 걷기로 바꾼다
-        seekob.GetComponent<Animator>().SetBool("AImove", true);
+            /// [ AIHide ] : AIHide XYZ Freeze(OFF)
+            GameManager.aIObject[i].GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezeAll;
 
-        //seek Ai를 움직이게 하기 위한 trigger
-        seekAssignment = true;
+            /// [ AIHide ] : AIHide Animation(ON)
+            GameManager.aIObject[i].GetComponent<Animator>().SetBool("AImove", true);
 
-        //Ai를 hide에 추가
-        //aIObject.Add(player);
-
-
-    }
-
-    public void playerSeekAiMove()//playe가 seek일때 Ai의 움직임
-    {
-        player.tag = "Seek"; //player의 tag를 seek롤 바꿈
-
-        seekob = player;
-        for (int o = 0; o < aIObject.Count; o++) //Ai들을 다 투명하게 바꿈
-        {
-            aIObject[o].transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = meterialclass[3].material;
+            /// [ AIHide ] : AIHide Speed(ON)
+            GameManager.aIObject[i].GetComponent<NavMeshAgent>().speed = 3f;
         }
-
-        //player의 scale를 키운다
-        player.transform.DOScale(new Vector3(10, 10, 10), 2);
-
-        //네모맵에 관한 코루딘 함수를 호출
-        StartCoroutine(squareCorutineAiMove());
-
-        //play가 seek일 때 필요한 요소들을 추가 시키는 코루딘 함수를 호출
-        StartCoroutine(playerSeekready());
-
     }
+    
+    
+    /// Move AIHide Randomly by Square Map Point
+    IEnumerator CorutineAiMove() {
+        /// Pick Point Randomly in Square Map each AIHide
+        while (true) {
+            for (int i = 0; i < AIHide_Counting; i++) {
+                yield return new WaitForSeconds(Random.Range(0, 2));
 
-    IEnumerator playerSeekready()//play가 seek일 때 필요한 요소들을 추가 시키는 코루딘 함수
-    {
-        yield return new WaitForSeconds(3);
-        //right를 단다
-        GameObject.Instantiate(spotLightPrepab, player.transform.position, Quaternion.identity).transform.parent = player.transform;
-
-        radar = GameObject.Instantiate(radar, player.transform.position, Quaternion.identity);
-        radar.transform.parent = player.transform;
-        radar.transform.localScale = new Vector3(1, 1, 1);
-
-    }
-
-    IEnumerator squareCorutineAiMove()//네모맵에 관한 코루딘 함수
-    {
-        for (int i = 0; i < aIObject.Count; i++)// AI 랜덤한 위치로 움직이게 한다.(초기값)
-        {
-            float temp = 0f;
-            Vector3 govetor3 = new Vector3(0, 0, 0);
-            for (int j = 0; j < squarePosition.Count; j++)
-            {
-                Vector3 seekpoMaObpo = seekob.transform.position - aIObject[i].transform.position;
-                
-                if (temp < (seekpoMaObpo- squarePosition[j]).magnitude)
-                {
-                    temp = (seekpoMaObpo - squarePosition[j]).magnitude;
-
-                    govetor3 = squarePosition[j];
+                Scene scene = SceneManager.GetActiveScene();
+                if (scene.name == "Square") {
+                    int Position = Random.Range(0, GameManager.squarePosition.Count);
+                    /// move AIHide to point
+                    GameManager.aIObject[i].GetComponent<NavMeshAgent>().SetDestination(GameManager.squarePosition[Position]);
+                } else if (scene.name == "Circle") {
+                    int Position = Random.Range(0, GameManager.circlePosition.Count);
+                    /// move AIHide to point
+                    GameManager.aIObject[i].GetComponent<NavMeshAgent>().SetDestination(GameManager.circlePosition[Position]);
+                } else if (scene.name == "Hexagon") {
+                    int Position = Random.Range(0, GameManager.hexagonPosition.Count);
+                    /// move AIHide to point
+                    GameManager.aIObject[i].GetComponent<NavMeshAgent>().SetDestination(GameManager.hexagonPosition[Position]);
                 }
-                
             }
-
-            aIObject[i].GetComponent<NavMeshAgent>().SetDestination(govetor3);
-            aIObject[i].GetComponent<Animator>().SetBool("AImove", true);
-        }
-        while (true)
-        {
-            yield return new WaitForSeconds(Random.Range(5,6));
-            for (int i = 0; i < aIObject.Count; i++)// AI 랜덤한 위치로 움직이게 한다.
-            {
-                aIObject[i].GetComponent<NavMeshAgent>().SetDestination(squarePosition[Random.Range(0, 7)]);
-                aIObject[i].GetComponent<Animator>().SetBool("AImove", true);
-            }
-
         }
     }
 
-   
 
+    /*                                                       [ AI SEEK ]                                                                  */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    IEnumerator seekAiMove() {
+        yield return new WaitForSeconds(3);
+
+        seeking_AI = Random.Range(0, AIHide_Counting);
+
+        AISeek_Seek_trigger = true; /// : SEEK seeking_AI / if : AISeek Exist
+            
+    }
+
+    /*                                                        [ SEEK ]                                                                    */
+    /*||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+    /// AISeek, Player(Seek)
+    public void SeekReady() {
+
+        /// Seek + seek Collider
+        SeekCollider = GameObject.Instantiate(GameManager.instance.radar, AISeek.transform.position, Quaternion.identity);
+
+        /// Seek.transform : Seek 's child
+        SeekCollider.transform.parent = AISeek.transform;
+
+        // change seek Collider transform scale (1,1,1)
+        SeekCollider.transform.localScale = new Vector3(1, 1, 1);
+
+        // Seek + spotLight
+        GameObject.Instantiate(GameManager.instance.spotLightPrepab, AISeek.transform.position, Quaternion.identity).transform.parent = AISeek.transform; //여기 이상할 수 있음
+
+        // Seek scale(Up)
+        AISeek.transform.DOScale(new Vector3(10, 10, 10), 2);
+
+        /// change Seek Material : (1) Seek_Material
+        AISeek.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = GameManager.material[1];
+
+        /// Seek XYZ Freeze(OFF)
+        AISeek.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezeAll;
+
+        if (AISeek != GameManager.player) {
+            
+            /// Seek Animation(ON)
+            AISeek.GetComponent<Animator>().SetBool("AImove", true);
+
+            /// Seek Speed(ON)
+            AISeek.GetComponent<NavMeshAgent>().speed = 2.5f;
+        }
+        else
+            /// Player XYZ Freeze(OFF)
+            Joyscript.IsAlive = true;
+    }
 }
