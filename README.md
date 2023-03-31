@@ -1,2 +1,0 @@
-# MJ2
-Tryangle
