@@ -230,19 +230,24 @@ public class AIScript : MonoBehaviour {
         /// change Seek Material : (1) Seek_Material
         AISeek.transform.GetChild(1).GetComponent<SkinnedMeshRenderer>().material = GameManager.material[1];
 
-        /// Seek XYZ Freeze(OFF)
-        AISeek.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezeAll;
 
         if (AISeek != GameManager.player) {
-            
+            /// Seek XYZ Freeze(OFF)
+            AISeek.GetComponent<Rigidbody>().constraints = ~RigidbodyConstraints.FreezeAll;
+
             /// Seek Animation(ON)
             AISeek.GetComponent<Animator>().SetBool("AImove", true);
 
             /// Seek Speed(ON)
             AISeek.GetComponent<NavMeshAgent>().speed = 2.5f;
+
+            Debug.Log("Bot is Seek!");
         }
-        else
+        else{
+
+            Debug.Log("player is Seek!");
             /// Player XYZ Freeze(OFF)
             Joyscript.IsAlive = true;
+        }
     }
 }
